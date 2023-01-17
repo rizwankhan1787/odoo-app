@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata
+  name: odoo-ui
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: odoo-ui
+  template:
+    metadata:
+      labels:
+        app: odoo-ui
+    spec:
+      containers:
+      - image: odoo:latest
+        name: odoo-ui
+        ports:
+        - containerPort: 80
